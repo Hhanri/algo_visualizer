@@ -1,3 +1,5 @@
+import 'package:algo_visualizer/pages/search/binary_search_page.dart';
+import 'package:algo_visualizer/pages/search/linear_search_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,6 +26,11 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return PageView(
+      children: const [
+        LinearSearchPage(),
+        BinarySearchPage()
+      ],
+    );
   }
 }
