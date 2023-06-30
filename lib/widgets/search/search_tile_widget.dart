@@ -15,31 +15,22 @@ class SearchTileWidget extends StatelessWidget {
       height: 60,
       decoration: BoxDecoration(
         border: number.state == SearchState.found
-          ? Border.all(color: Colors.green)
+          ? Border.all(color: number.color)
           : null,
         borderRadius: const BorderRadius.all(Radius.circular(5.0)),
       ),
       child: CustomTextStyle(
-        fontSize: number.state == SearchState.searched ? 20 : 42,
         number: number,
-        numberValue: number.value.toString(),
-        state: number.state
       ),
     );
   }
 }
 
 class CustomTextStyle extends StatelessWidget {
-  final double fontSize;
   final SearchModel number;
-  final String numberValue;
-  final SearchState state;
   const CustomTextStyle({
     Key? key,
-    required this.fontSize,
     required this.number,
-    required this.numberValue,
-    required this.state
   }) : super(key: key);
 
   @override
@@ -48,16 +39,15 @@ class CustomTextStyle extends StatelessWidget {
       curve: Curves.easeOut,
       duration: const Duration(milliseconds: 300),
       style: TextStyle(
-        fontSize: fontSize,
-        decoration: (state == SearchState.discard)
-          ? TextDecoration.lineThrough
-          : TextDecoration.none,
+        fontSize: number.state == SearchState.searched || number.state == SearchState.discard
+          ? 30
+          : 42,
         decorationStyle: TextDecorationStyle.solid,
         decorationThickness: 1.7,
         color: number.color,
       ),
       child: Center(
-        child: Text(numberValue),
+        child: Text(number.value.toString()),
       ),
     );
   }

@@ -39,15 +39,17 @@ class _SearchWidgetState<T extends BaseSearchCubit> extends State<SearchWidget<T
   Widget build(BuildContext context) {
     return Row(
       children: [
-        TextField(
-          controller: textEditingController,
-          decoration: const InputDecoration(
-            labelText: 'Value',
+        Expanded(
+          child: TextField(
+            controller: textEditingController,
+            decoration: const InputDecoration(
+              labelText: 'Value',
+            ),
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ],
+            keyboardType: TextInputType.number,
           ),
-          inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-          ],
-          keyboardType: TextInputType.number,
         ),
         BlocSelector<T, SearchCubitState, bool>(
           selector: (state) => state.isSearching,

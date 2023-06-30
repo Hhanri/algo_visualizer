@@ -28,7 +28,7 @@ class _SearchTextWidget<T extends BaseSearchCubit> extends State<SearchTextWidge
   @override
   Widget build(BuildContext context) {
     return BlocSelector<T, SearchCubitState, int?>(
-      selector: (state) => state.position,
+      selector: (state) => state.foundPosition,
       builder: (context, position) {
         if (position == null) return const SizedBox.shrink();
         return SizedBox(
