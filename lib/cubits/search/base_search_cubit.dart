@@ -8,8 +8,9 @@ class BaseSearchCubit extends BaseCubit<SearchCubitState> {
   BaseSearchCubit() : super(
     SearchCubitState(
       numbers: [],
+      currentPosition: 0,
       isSearching: false,
-      position: null
+      foundPosition: null
     )
   );
 
@@ -38,11 +39,15 @@ class BaseSearchCubit extends BaseCubit<SearchCubitState> {
     emitState();
   }
 
+  int _currentPosition = 0;
   bool _isSearching = false;
   int? _position;
 
+  int get currentPosition => _currentPosition;
   bool get isSearching => _isSearching;
   int? get position => _position;
+
+  set newPosition(int position) => _currentPosition = position;
 
   @mustCallSuper
   void search({int value = 34}) {
@@ -64,6 +69,7 @@ class BaseSearchCubit extends BaseCubit<SearchCubitState> {
   @protected
   void potentialNode(int index) {
     numbers[index].potential();
+    _currentPosition = index;
     emitState();
   }
 
@@ -105,9 +111,10 @@ class BaseSearchCubit extends BaseCubit<SearchCubitState> {
   void emitState() {
     emit(
       SearchCubitState(
-        numbers: numbers,
+        numbers: [...numbers],
         isSearching: isSearching,
-        position: position
+        currentPosition: currentPosition,
+        foundPosition: position
       )
     );
   }

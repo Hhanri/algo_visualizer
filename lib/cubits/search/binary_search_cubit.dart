@@ -12,6 +12,7 @@ class BinarySearchCubit extends BaseSearchCubit {
   Future<int?> _startBinarySearch(List<SearchModel> list, int target) async {
     return _binarySearchHelper(list, target, 0, list.length - 1);
   }
+
   Future<int?> _binarySearchHelper(
     List<SearchModel> list,
     int target,
@@ -37,14 +38,14 @@ class BinarySearchCubit extends BaseSearchCubit {
 
       } else if (list[middle].value < target) {
 
-        discardNodes(left, middle);
+        discardNodes(left, middle - 1);
         await pause();
         left = middle + 1;
 
       }
       searchedNode(middle);
     }
-
+    nodeNotFound();
     return null;
   }
 }

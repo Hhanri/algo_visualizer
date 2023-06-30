@@ -18,10 +18,10 @@ class _SearchIndicatorWidgetState<T extends BaseSearchCubit> extends State<Searc
   Offset? _getIndicatorOffset(SearchModel number) {
     var pos = Offset.zero;
     try {
-      final RenderBox rObject = number.key.currentContext?.findRenderObject() as RenderBox;
-      final RenderBox parentObject = widget.parentKey.currentContext?.findRenderObject() as RenderBox;
-      final parentPos = parentObject.localToGlobal(const Offset(0, 0));
-      pos = -rObject.globalToLocal(parentPos);
+      final RenderBox? rObject = number.key.currentContext?.findRenderObject() as RenderBox?;
+      final RenderBox? parentObject = widget.parentKey.currentContext?.findRenderObject() as RenderBox?;
+      final parentPos = parentObject?.localToGlobal(Offset.zero);
+      pos = -(rObject?.globalToLocal(parentPos ?? Offset.zero) ?? Offset.zero);
     } catch (e) {
       print(e);
     }
@@ -32,13 +32,8 @@ class _SearchIndicatorWidgetState<T extends BaseSearchCubit> extends State<Searc
   Widget build(BuildContext context) {
     return BlocBuilder<T, SearchCubitState>(
       builder: (context, state) {
-
-        for (var number in state.numbers) {
-          if (number.state == SearchState.search) {
-            _position = _getIndicatorOffset(number);
-            break;
-          }
-        }
+        
+        _position = _getIndicatorOffset(state.numbers[state.currentPosition]);
 
         return AnimatedPositioned(
           left: _position?.dx,
