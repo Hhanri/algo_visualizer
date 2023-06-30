@@ -54,7 +54,7 @@ class BaseSearchCubit extends BaseCubit<SearchCubitState> {
   @protected
   void reset() {
     _isSearching = false;
-    _position = -2;
+    _position = null;
     for (var number in numbers) {
       number.reset();
     }
@@ -98,7 +98,7 @@ class BaseSearchCubit extends BaseCubit<SearchCubitState> {
   @protected
   void nodeNotFound() {
     _isSearching = false;
-    _position = null;
+    _position = -1;
     emitState();
   }
 
