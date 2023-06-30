@@ -2,8 +2,16 @@ import 'package:algo_visualizer/cubits/base_cubit.dart';
 import 'package:algo_visualizer/models/search_model.dart';
 import 'package:flutter/foundation.dart';
 
-class BaseSearchCubit extends BaseCubit<List<SearchModel>> {
-  BaseSearchCubit() : super([]);
+part 'search_cubit_state.dart';
+
+class BaseSearchCubit extends BaseCubit<SearchCubitState> {
+  BaseSearchCubit() : super(
+    SearchCubitState(
+      numbers: [],
+      isSearching: false,
+      position: null
+    )
+  );
 
   final List<SearchModel> numbers = [
     SearchModel(0),
@@ -31,15 +39,16 @@ class BaseSearchCubit extends BaseCubit<List<SearchModel>> {
   }
 
   bool _isSearching = false;
-  int _position = -2;
+  int? _position;
 
   bool get isSearching => _isSearching;
-  int get position => _position;
+  int? get position => _position;
 
   @mustCallSuper
   void search({int value = 34}) {
     reset();
     _isSearching = true;
+    emitState();
   }
 
   @protected
@@ -89,11 +98,17 @@ class BaseSearchCubit extends BaseCubit<List<SearchModel>> {
   @protected
   void nodeNotFound() {
     _isSearching = false;
-    _position = -1;
+    _position = null;
     emitState();
   }
 
   void emitState() {
-    emit(numbers);
+    emit(
+      SearchCubitState(
+        numbers: numbers,
+        isSearching: isSearching,
+        position: position
+      )
+    );
   }
 }
