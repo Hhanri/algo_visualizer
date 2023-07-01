@@ -19,11 +19,11 @@ class SelectionSortCubit extends BaseSortCubit {
       for (int j = i + 1; j < list.length; j++) {
         await _markInterestedAndRender(j);
         if (list[j].value < list[smallest].value) {
-          await _resetStateAndRender(smallest);
+          _resetStateAndRender(smallest);
           smallest = j;
           await _markPivotAndRender(j);
         } else {
-          await _resetStateAndRender(j);
+          _resetStateAndRender(j);
         }
       }
       final tmp = list[i];

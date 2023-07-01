@@ -39,7 +39,6 @@ class QuickSortCubit extends BaseSortCubit {
 
         markNodeAsNotSorted(index);
         emitState();
-        await pause();
       }
       markNodeAsNotSorted(i);
       emitState();
