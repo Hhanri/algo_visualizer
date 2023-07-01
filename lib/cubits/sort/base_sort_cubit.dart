@@ -57,6 +57,7 @@ class BaseSortCubit extends BaseCubit<SortCubitState> {
       number.reset();
     }
     numbers.shuffle();
+    emitState();
   }
 
   @protected
