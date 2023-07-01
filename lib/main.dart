@@ -2,6 +2,7 @@ import 'package:algo_visualizer/pages/search/binary_search_page.dart';
 import 'package:algo_visualizer/pages/search/linear_search_page.dart';
 import 'package:algo_visualizer/pages/sort/bubble_sort_page.dart';
 import 'package:algo_visualizer/pages/sort/insertion_sort_page.dart';
+import 'package:algo_visualizer/pages/sort/quick_sort_page.dart';
 import 'package:algo_visualizer/pages/sort/selection_sort_page.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +32,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageView(
       children: const [
+        QuickSortPage(),
         SelectionSortPage(),
         InsertionSortPage(),
         BubbleSortPage(),

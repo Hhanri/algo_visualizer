@@ -62,6 +62,9 @@ class BaseSortCubit extends BaseCubit<SortCubitState> {
 
   @protected
   void markNodeAsNotSorted(int index) {
+    if (index < 0 || index >= numbers.length) {
+      return;
+    }
     numbers[index].reset();
   }
 
