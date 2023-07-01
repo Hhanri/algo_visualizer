@@ -6,7 +6,7 @@ abstract class BaseCubit<T> extends Cubit<T> {
   double _executionSpeed = 0.5;
   double get executionSpeed => _executionSpeed;
 
-  set executionSpeed(double speed) {
+  void setExecutionSpeed(double speed) {
     if (speed > 1.0) {
       _executionSpeed = 1;
       return;
