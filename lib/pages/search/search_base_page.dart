@@ -5,17 +5,23 @@ import 'package:algo_visualizer/widgets/search/search_visualizer_widget.dart';
 import 'package:algo_visualizer/widgets/search/search_widget.dart';
 import 'package:flutter/material.dart';
 
-class SearchBasePage<T extends BaseSearchCubit> extends StatelessWidget {
+class SearchBasePage<T extends BaseSearchCubit> extends StatefulWidget {
   final String title;
   const SearchBasePage({Key? key, required this.title}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    GlobalKey key = GlobalKey(debugLabel: title);
+  State<SearchBasePage<T>> createState() => _SearchBasePageState<T>();
+}
 
+class _SearchBasePageState<T extends BaseSearchCubit> extends State<SearchBasePage<T>> with AutomaticKeepAliveClientMixin {
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    GlobalKey key = GlobalKey(debugLabel: widget.title);
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
       ),
       body: Column(
         children: <Widget>[
@@ -37,4 +43,7 @@ class SearchBasePage<T extends BaseSearchCubit> extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
