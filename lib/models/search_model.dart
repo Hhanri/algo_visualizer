@@ -9,9 +9,10 @@ enum SearchState {
 }
 
 class SearchModel {
+  final int value;
+
   SearchModel(this.value);
 
-  final int value;
   SearchState state = SearchState.open;
   Color color = Colors.black54;
   GlobalKey key = GlobalKey();
