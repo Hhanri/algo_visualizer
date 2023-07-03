@@ -1,15 +1,14 @@
 part of 'base_sort_cubit.dart';
 
 @immutable
-class SortCubitState {
+class SortCubitState extends BaseState {
   final List<SortModel> numbers;
   final bool isSorting;
-  final double speed;
 
   const SortCubitState({
+    required super.speed,
     required this.numbers,
     required this.isSorting,
-    required this.speed,
   });
 }
 

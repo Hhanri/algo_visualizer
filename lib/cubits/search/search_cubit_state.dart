@@ -1,17 +1,17 @@
 part of 'base_search_cubit.dart';
 
-class SearchCubitState {
+@immutable
+class SearchCubitState extends BaseState {
   final List<SearchModel> numbers;
   final bool isSearching;
   final int currentPosition;
   final int? foundPosition;
-  final double speed;
 
-  SearchCubitState({
+  const SearchCubitState({
+    required super.speed,
     required this.numbers,
     required this.isSearching,
     required this.currentPosition,
     required this.foundPosition,
-    required this.speed,
   });
 }

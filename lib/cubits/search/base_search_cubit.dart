@@ -6,7 +6,7 @@ part 'search_cubit_state.dart';
 
 class BaseSearchCubit extends BaseCubit<SearchCubitState> {
   BaseSearchCubit() : super(
-    SearchCubitState(
+    const SearchCubitState(
       numbers: [],
       currentPosition: 0,
       isSearching: false,
