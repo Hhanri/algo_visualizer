@@ -9,6 +9,7 @@ class BaseSortCubit extends BaseCubit<SortCubitState> {
     const SortCubitState(
       numbers: [],
       isSorting: false,
+      speed: 0.5
     )
   );
 
@@ -116,11 +117,18 @@ class BaseSortCubit extends BaseCubit<SortCubitState> {
     _isSorted = true;
   }
 
+  @override
+  void setExecutionSpeed(double speed) {
+    super.setExecutionSpeed(speed);
+    emitState();
+  }
+
   void emitState() {
     emit(
       SortCubitState(
         numbers: [...numbers],
         isSorting: isSorting,
+        speed: executionSpeed
       )
     );
   }

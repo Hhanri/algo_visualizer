@@ -5,11 +5,13 @@ class SearchCubitState {
   final bool isSearching;
   final int currentPosition;
   final int? foundPosition;
+  final double speed;
 
   SearchCubitState({
     required this.numbers,
     required this.isSearching,
     required this.currentPosition,
-    required this.foundPosition
+    required this.foundPosition,
+    required this.speed,
   });
 }

@@ -10,7 +10,8 @@ class BaseSearchCubit extends BaseCubit<SearchCubitState> {
       numbers: [],
       currentPosition: 0,
       isSearching: false,
-      foundPosition: null
+      foundPosition: null,
+      speed: 0.5
     )
   );
 
@@ -108,13 +109,20 @@ class BaseSearchCubit extends BaseCubit<SearchCubitState> {
     emitState();
   }
 
+  @override
+  void setExecutionSpeed(double speed) {
+    super.setExecutionSpeed(speed);
+    emitState();
+  }
+
   void emitState() {
     emit(
       SearchCubitState(
         numbers: [...numbers],
         isSearching: isSearching,
         currentPosition: currentPosition,
-        foundPosition: position
+        foundPosition: position,
+        speed: executionSpeed
       )
     );
   }

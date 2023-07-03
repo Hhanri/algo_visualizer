@@ -16,10 +16,6 @@ abstract class BaseCubit<T> extends Cubit<T> {
       return;
     }
     _executionSpeed = speed;
-    render(state);
-  }
-  void render(T state) {
-    emit(state);
   }
 
   Future pause() async {
