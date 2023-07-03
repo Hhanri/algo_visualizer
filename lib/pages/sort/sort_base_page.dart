@@ -1,4 +1,5 @@
 import 'package:algo_visualizer/cubits/sort/base_sort_cubit.dart';
+import 'package:algo_visualizer/widgets/sort/sort_speed_slider_widget.dart';
 import 'package:algo_visualizer/widgets/sort/sort_button_widget.dart';
 import 'package:algo_visualizer/widgets/sort/sort_visualizer_widget.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,8 @@ class _SortBasePageState<T extends BaseSortCubit> extends State<SortBasePage<T>>
           Expanded(
             child: SortVisualizerWidget<T>(),
           ),
+          SortSpeedSliderWidget<T>(),
+          const SizedBox(height: 24),
           SortButtonWidget<T>(),
         ],
       ),
