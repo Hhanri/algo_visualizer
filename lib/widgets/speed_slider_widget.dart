@@ -10,17 +10,25 @@ class SpeedSliderWidget<T extends BaseCubit<S>, S extends BaseState> extends Sta
     return Column(
       children: [
         const Text('SPEED'),
-        BlocSelector<T, S, double>(
-          selector: (state) => state.speed,
-          builder: (context, speed) {
-            return Slider(
-              min: 0,
-              max: 1,
-              divisions: 10,
-              value: speed,
-              onChanged: context.read<T>().setExecutionSpeed
-            );
-          }
+        Row(
+          children: [
+            const Text("Fast"),
+            Expanded(
+              child: BlocSelector<T, S, double>(
+                selector: (state) => state.speed,
+                builder: (context, speed) {
+                  return Slider(
+                    min: 0,
+                    max: 1,
+                    divisions: 10,
+                    value: speed,
+                    onChanged: context.read<T>().setExecutionSpeed
+                  );
+                }
+              ),
+            ),
+            const Text("Slow")
+          ],
         )
       ],
     );
